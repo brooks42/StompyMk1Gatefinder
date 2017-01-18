@@ -31,6 +31,15 @@
     stepCount++;
 }
 
+// runs the entire simulation without stopping
+- (void) runWholeSimulation {
+    while (stepCount < SIMULATION_LENGTH) {
+        stepCount++;
+        
+        // TODO: running the simulation here lalala so much trig wow
+    }
+}
+
 // starts autostepping the simulation
 - (void) startAutosteppingSimulation {
     autoStep = YES;

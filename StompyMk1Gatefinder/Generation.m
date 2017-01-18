@@ -6,6 +6,7 @@
 //  Copyright © 2017 Chris Brooks. All rights reserved.
 //
 
+#import <GameKit/GameKit.h>
 #import "Generation.h"
 #import "Bot.h"
 #import "DNAGenerator.h"
@@ -24,17 +25,50 @@
         [botList addObject: [[Bot alloc] initWithServoValueArray: [generator completelyRandomDNA]]];
     }
     
+    [gen setBots:botList];
+    
     return gen;
 }
 
 //
 + (Generation *) createNewGenerationForParents: (NSArray *) parents {
-    return [Generation createInitialGeneration]; // TODO: implement the DNA mixing
+    
+    NSLog(@"createNewGenerationForParents: %lu", [parents count]);
+    
+    // we take the parents and get the array of children for all of them, collating them into a giant array
+    NSMutableArray *allChildren = [NSMutableArray new];
+    DNAGenerator *generator = [[DNAGenerator alloc] init];
+    
+    // n^2 over all parents:
+    for (Bot *parentOne in parents) {
+        for (Bot *parentTwo in parents) {
+            [allChildren addObjectsFromArray: [generator mingledDNAForBot:parentOne andBot:parentTwo]];
+        }
+    }
+    
+    // now generate bots from the gathered DNA and set them into the next generation
+    Generation *nextGen = [Generation new];
+    
+    NSMutableArray *bots = [NSMutableArray new];
+    for (DNA dna in allChildren) {
+        [bots addObject:[[Bot alloc] initWithServoValueArray:dna]];
+    }
+    
+    [nextGen setBots:bots];
+    
+    return nextGen;
 }
 
 //
 - (NSArray *) mostSuccessfulRobots {
-    return nil; // there is no success yet
+    
+    // there is no success yet, so we'll just return a random PROLIFERATE_COUNT robots
+    NSMutableArray *botList = [[[GKRandomSource sharedRandom] arrayByShufflingObjectsInArray:_bots] mutableCopy];
+    
+    // now we'll get the first PROLIFERATE_COUNT bots and return those
+    NSArray *theBest = [botList subarrayWithRange:NSMakeRange(0, PROLIFERATE_COUNT)];
+    
+    return theBest;
 }
 
 // returns all of the robots at once. Probably a bad idea to do this a lot

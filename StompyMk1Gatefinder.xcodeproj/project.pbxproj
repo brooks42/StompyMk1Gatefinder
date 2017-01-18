@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1134C9411E2F479700152A2D /* Gatefinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1134C9401E2F479700152A2D /* Gatefinder.m */; };
 		11A591051E2DACAA0073B662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A591041E2DACAA0073B662 /* AppDelegate.m */; };
 		11A591081E2DACAA0073B662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A591071E2DACAA0073B662 /* main.m */; };
 		11A5910B1E2DACAA0073B662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5910A1E2DACAA0073B662 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1134C93F1E2F479700152A2D /* Gatefinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gatefinder.h; sourceTree = "<group>"; };
+		1134C9401E2F479700152A2D /* Gatefinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gatefinder.m; sourceTree = "<group>"; };
 		11A591001E2DACAA0073B662 /* StompyMk1Gatefinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StompyMk1Gatefinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A591031E2DACAA0073B662 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11A591041E2DACAA0073B662 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				11A591191E2DAEFA0073B662 /* Bot.m */,
 				11A591221E2DE6420073B662 /* Simulation.h */,
 				11A591231E2DE6420073B662 /* Simulation.m */,
+				1134C93F1E2F479700152A2D /* Gatefinder.h */,
+				1134C9401E2F479700152A2D /* Gatefinder.m */,
 			);
 			name = algorithm;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1134C9411E2F479700152A2D /* Gatefinder.m in Sources */,
 				11A591241E2DE6420073B662 /* Simulation.m in Sources */,
 				11A5911E1E2DAF810073B662 /* Generation.m in Sources */,
 				11A5910B1E2DACAA0073B662 /* ViewController.m in Sources */,
@@ -328,6 +334,7 @@
 				11A591161E2DACAA0073B662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

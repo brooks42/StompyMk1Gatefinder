@@ -25,4 +25,7 @@
 - (void) startAutosteppingSimulation;
 - (void) stopAutosteppingSimulation;
 
+// runs the entire simulation without stopping
+- (void) runWholeSimulation;
+
 @end
