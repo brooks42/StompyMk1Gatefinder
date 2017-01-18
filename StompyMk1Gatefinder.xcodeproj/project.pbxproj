@@ -12,6 +12,10 @@
 		11A5910B1E2DACAA0073B662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5910A1E2DACAA0073B662 /* ViewController.m */; };
 		11A5910D1E2DACAA0073B662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A5910C1E2DACAA0073B662 /* Assets.xcassets */; };
 		11A591101E2DACAA0073B662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5910E1E2DACAA0073B662 /* Main.storyboard */; };
+		11A5911A1E2DAEFA0073B662 /* Bot.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A591191E2DAEFA0073B662 /* Bot.m */; };
+		11A5911E1E2DAF810073B662 /* Generation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5911D1E2DAF810073B662 /* Generation.m */; };
+		11A591211E2DDE360073B662 /* DNAGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A591201E2DDE360073B662 /* DNAGenerator.m */; };
+		11A591241E2DE6420073B662 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A591231E2DE6420073B662 /* Simulation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,14 @@
 		11A5910C1E2DACAA0073B662 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11A5910F1E2DACAA0073B662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11A591111E2DACAA0073B662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A591181E2DAEFA0073B662 /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
+		11A591191E2DAEFA0073B662 /* Bot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bot.m; sourceTree = "<group>"; };
+		11A5911C1E2DAF810073B662 /* Generation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Generation.h; sourceTree = "<group>"; };
+		11A5911D1E2DAF810073B662 /* Generation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Generation.m; sourceTree = "<group>"; };
+		11A5911F1E2DDE360073B662 /* DNAGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAGenerator.h; sourceTree = "<group>"; };
+		11A591201E2DDE360073B662 /* DNAGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNAGenerator.m; sourceTree = "<group>"; };
+		11A591221E2DE6420073B662 /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulation.h; sourceTree = "<group>"; };
+		11A591231E2DE6420073B662 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 		11A591021E2DACAA0073B662 /* StompyMk1Gatefinder */ = {
 			isa = PBXGroup;
 			children = (
+				11A5911B1E2DAF730073B662 /* algorithm */,
 				11A591031E2DACAA0073B662 /* AppDelegate.h */,
 				11A591041E2DACAA0073B662 /* AppDelegate.m */,
 				11A591091E2DACAA0073B662 /* ViewController.h */,
@@ -74,6 +87,21 @@
 				11A591071E2DACAA0073B662 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11A5911B1E2DAF730073B662 /* algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				11A5911C1E2DAF810073B662 /* Generation.h */,
+				11A5911D1E2DAF810073B662 /* Generation.m */,
+				11A5911F1E2DDE360073B662 /* DNAGenerator.h */,
+				11A591201E2DDE360073B662 /* DNAGenerator.m */,
+				11A591181E2DAEFA0073B662 /* Bot.h */,
+				11A591191E2DAEFA0073B662 /* Bot.m */,
+				11A591221E2DE6420073B662 /* Simulation.h */,
+				11A591231E2DE6420073B662 /* Simulation.m */,
+			);
+			name = algorithm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A591241E2DE6420073B662 /* Simulation.m in Sources */,
+				11A5911E1E2DAF810073B662 /* Generation.m in Sources */,
 				11A5910B1E2DACAA0073B662 /* ViewController.m in Sources */,
+				11A5911A1E2DAEFA0073B662 /* Bot.m in Sources */,
 				11A591081E2DACAA0073B662 /* main.m in Sources */,
 				11A591051E2DACAA0073B662 /* AppDelegate.m in Sources */,
+				11A591211E2DDE360073B662 /* DNAGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

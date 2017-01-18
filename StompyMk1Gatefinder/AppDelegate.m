@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "DNAGenerator.h"
+#import "Bot.h"
+#import "Generation.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +19,14 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    // for now just run the algorithm, it's fine
+    Generation *test = [Generation createInitialGeneration];
+    NSLog(@"Whole generation: %@", [test description]);
+    
+    /*Bot *bot = [[Bot alloc] initWithServoValueArray:dna];
+    [bot setName:@"Terrence"];
+    
+    NSLog(@"Robot: %@", [bot description]);*/
 }
 
 
