@@ -7,10 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Bot.h"
+
+#define SERVO_COUNT 8
+#define ROW_COUNT 8
 
 @interface DNAGenerator : NSObject
 
 // returns a completely randomized DNA array set for a single bot
-- (NSArray *) completelyRandomDNA;
+- (DNA) completelyRandomDNA;
+
+// returns 4 DNA objects, the results of mingling the passed parent's DNA
+- (NSArray *) mingledDNAForBot: (Bot *) one andBot: (Bot *) two;
 
 @end

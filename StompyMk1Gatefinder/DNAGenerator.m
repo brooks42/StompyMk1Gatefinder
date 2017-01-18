@@ -7,20 +7,11 @@
 //
 
 #import "DNAGenerator.h"
-#import "Bot.h"
-
-#ifndef SERVO_COUNT
-#define SERVO_COUNT 8
-#endif
-
-#ifndef ROW_COUNT
-#define ROW_COUNT 8
-#endif
 
 @implementation DNAGenerator
 
 //
-- (NSArray *) completelyRandomDNA {
+- (DNA) completelyRandomDNA {
     NSMutableArray *dna = [NSMutableArray new];
     
     NSMutableArray *servoValues;
@@ -35,6 +26,66 @@
     }
 
     return [dna copy];
+}
+
+//
+- (NSArray *) mingledDNAForBot:(Bot *)one andBot:(Bot *)two {
+    
+    NSMutableArray *childrenDNA = [NSMutableArray new];
+    
+    NSMutableArray *newDNA = [NSMutableArray new];
+    
+    // TODO: in the future we'll also be adding randomized tweaks to the parent values as we add them to the children, to make it more "genetic" where this is just gross cloning
+    // we generate 4 DNA objects
+    // the first is one's left legs and two's right
+    newDNA = [NSMutableArray new];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_BACK_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_BACK_SHOULDER]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_FRONT_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_FRONT_SHOULDER]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_BACK_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_BACK_SHOULDER]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_FRONT_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_FRONT_SHOULDER]];
+    [childrenDNA addObject:newDNA];
+    
+    // the second is one's right legs and two's left
+    newDNA = [NSMutableArray new];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_BACK_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_BACK_SHOULDER]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_FRONT_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_FRONT_SHOULDER]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_BACK_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_BACK_SHOULDER]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_FRONT_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_FRONT_SHOULDER]];
+    [childrenDNA addObject:newDNA];
+    
+    // the third is one's front legs and two's back
+    newDNA = [NSMutableArray new];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_BACK_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_BACK_SHOULDER]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_FRONT_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_FRONT_SHOULDER]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_BACK_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_BACK_SHOULDER]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_FRONT_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_FRONT_SHOULDER]];
+    [childrenDNA addObject:newDNA];
+    
+    // the fourth is one's back legs and two's front
+    newDNA = [NSMutableArray new];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_BACK_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:LEFT_BACK_SHOULDER]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_FRONT_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:LEFT_FRONT_SHOULDER]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_BACK_ELBOW]];
+    [newDNA addObject:[[one servoValues] objectAtIndex:RIGHT_BACK_SHOULDER]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_FRONT_ELBOW]];
+    [newDNA addObject:[[two servoValues] objectAtIndex:RIGHT_FRONT_SHOULDER]];
+    [childrenDNA addObject:newDNA];
+    
+    return childrenDNA;
 }
 
 @end

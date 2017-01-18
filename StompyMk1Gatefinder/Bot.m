@@ -11,7 +11,7 @@
 @implementation Bot
 
 //
-- (instancetype) initWithServoValueArray: (NSArray *) array {
+- (instancetype) initWithServoValueArray: (DNA) array {
     self = [super init];
   
     //
