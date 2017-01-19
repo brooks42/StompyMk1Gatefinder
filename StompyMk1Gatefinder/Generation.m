@@ -62,8 +62,19 @@
 //
 - (NSArray *) mostSuccessfulRobots {
     
-    // there is no success yet, so we'll just return a random PROLIFERATE_COUNT robots
-    NSMutableArray *botList = [[[GKRandomSource sharedRandom] arrayByShufflingObjectsInArray:_bots] mutableCopy];
+    // there's still no real measure of success just yet, but I'm going to test that the genetic algorithm idea even works by selecting for the value at [0][0]
+    NSArray *botList = [_bots sortedArrayUsingComparator:^NSComparisonResult(Bot *  _Nonnull obj1, Bot * _Nonnull obj2) {
+    
+        if ([obj1 distanceTravelled] > [obj2 distanceTravelled]) {
+            return NSOrderedAscending;
+        }
+        
+        if ([obj2 distanceTravelled] < [obj2 distanceTravelled]) {
+            return NSOrderedDescending;
+        }
+        
+        return NSOrderedSame;
+    }];
     
     // now we'll get the first PROLIFERATE_COUNT bots and return those
     NSArray *theBest = [botList subarrayWithRange:NSMakeRange(0, PROLIFERATE_COUNT)];
