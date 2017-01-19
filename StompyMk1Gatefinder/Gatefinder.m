@@ -43,11 +43,35 @@
     
     [self createInitialGeneration];
     
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    
+    // just store it on the desktop for now, there's lots of cleaning to be done with this code
+    NSString *pathName = [[[NSFileManager defaultManager] homeDirectoryForCurrentUser] path];
+    NSString *directoryName = [NSString stringWithFormat:@"%@/Desktop/Gatefinder/simulation-%@", pathName, [dateFormatter stringFromDate:[NSDate new]]];
+    NSLog(@"Saving simulation to %@", directoryName);
+    
+    NSError *error = nil;
+    bool success = [[NSFileManager defaultManager] createDirectoryAtPath:directoryName withIntermediateDirectories:YES attributes:nil error:&error];
+
+    if (error != nil || !success) {
+        NSLog(@"Error trying to run the simulation: %@", [error description]);
+        return;
+    }
+    
     // iterate through the entire algorithm here
     for (int i = 0; i < SIMULATION_COUNT; i++) {
         NSLog(@"starting simualtion #%d", i);
         simulation = [[Simulation alloc] initWithGeneration:_currentGeneration];
         [simulation runWholeSimulation]; // TODO: this will generate the best robots list in the current generation
+        
+        // save the current generation to a file in the path we created above
+        NSLog(@"Writing file");
+        success = [[NSFileManager defaultManager] createFileAtPath:[NSString stringWithFormat:@"%@/generation%lu.txt", directoryName, [_currentGeneration generationNumber]] contents:[_currentGeneration robotsAsData] attributes:nil];
+        if (!success) {
+            NSLog(@"Failed to write the file at %@", [NSString stringWithFormat:@"%@/generation%lu.txt", directoryName, [_currentGeneration generationNumber]]);
+        }
+        
         [self nextGeneration];
     }
     

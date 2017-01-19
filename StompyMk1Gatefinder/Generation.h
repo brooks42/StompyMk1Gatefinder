@@ -17,7 +17,7 @@
 // each generation has a number of robots and a target number of robots that will pass their genes on
 @interface Generation : NSObject
 
-@property int generationNumber;
+@property unsigned long generationNumber;
 
 // the bots for this generation
 @property NSArray *bots;
@@ -31,5 +31,8 @@
 
 // returns PROLIFERATE_COUNT most successful robots. These will be used as parents for the next generation
 - (NSArray *) mostSuccessfulRobots;
+
+// gets all of the robots in this generation as an NSData object so we can write it to a file
+- (NSData *) robotsAsData;
 
 @end

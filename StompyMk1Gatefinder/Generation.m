@@ -54,7 +54,10 @@
         [bots addObject:[[Bot alloc] initWithServoValueArray:dna]];
     }
     
-    [nextGen setBots:bots];
+    // now we use only a randomly selected GEN_BOT_COUNT of those robots for the next generation
+    NSArray *finalBots = [[[GKRandomSource sharedRandom] arrayByShufflingObjectsInArray:bots] subarrayWithRange:NSMakeRange(0, GEN_BOT_COUNT)];
+    
+    [nextGen setBots:finalBots];
     
     return nextGen;
 }
@@ -82,13 +85,19 @@
     return theBest;
 }
 
+//
+- (NSData *) robotsAsData {
+    NSLog(@"number of robots: %lu", [_bots count]);
+    return [[self description] dataUsingEncoding:NSUTF8StringEncoding]; // for now we just return the description string as a data object
+}
+
 // returns all of the robots at once. Probably a bad idea to do this a lot
 - (NSString *) description {
     NSString *desc = @"Generation {";
     
     //
     for (Bot *bot in _bots) {
-        desc = [NSString stringWithFormat:@"%@\n", [bot description]];
+        desc = [NSString stringWithFormat:@"%@%@\n", desc, [bot description]];
     }
     
     return desc;
